@@ -4,6 +4,7 @@ let ul=document.querySelector("#items");
 form.addEventListener("submit",additem);
 ul.addEventListener("click",removeitems);
 
+
 /*
 When an event occurs on an element, such as a click event on a link or a form submission event, the browser typically performs a default action associated with that event. For example, a click event on a link will navigate to the URL specified in the link's href attribute, and a form submission event will submit the form and refresh the page.
 to prevent this default behaviour we use e.preventDefault().
