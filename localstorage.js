@@ -47,7 +47,7 @@ function saveinfo(event) {
 
   // Create an edit button for the customer
   let editbtn = document.createElement("button");
-  editbtn.className = "btn btn-dark btn-sm";
+  editbtn.className = "btn btn-dark btn-sm edit";
   editbtn.setAttribute("style", "margin-right:5px;float: right;");
   editbtn.appendChild(document.createTextNode("Edit"));
   customer.appendChild(editbtn);
@@ -68,6 +68,30 @@ function remove(event){
             ul.removeChild(li);
 
             let emailofcustomer = event.target.parentNode.firstChild.textContent.split(" ").pop();
+            localStorage.removeItem(emailofcustomer);
+        }
+    }
+}
+
+//adding edit button functionality
+ul.addEventListener("click",editlist);
+function editlist(event){
+    if(event.target.classList.contains("edit"))
+    {
+        if(confirm("Are you sure?"))
+        {
+            let li = event.target.parentNode;
+            ul.removeChild(li);
+
+            let emailofcustomer = event.target.parentNode.firstChild.textContent.split(" ").pop();
+
+            let edited_customer = JSON.parse(localStorage.getItem(emailofcustomer));
+
+            document.getElementById("fname").value = edited_customer[0];
+            document.getElementById("lname").value = edited_customer[1];
+            document.getElementById("email").value = edited_customer[2];
+            document.getElementById("date").value = edited_customer[3];
+            document.getElementById("time").value = edited_customer[4];
             localStorage.removeItem(emailofcustomer);
         }
     }
