@@ -57,3 +57,26 @@ function additem(e) {
 
 
 
+//for search
+
+let filter = document.getElementById("filter");
+
+filter.addEventListener("keyup",search);
+
+function search(event) {
+
+    let text = event.target.value.toLowerCase();
+    let items = document.getElementsByTagName("li");
+    Array.from(items).forEach(function(item){
+        let itemname = item.firstChild.textContent;
+        if(itemname.toLowerCase().indexOf(text)!=-1)
+        {
+            item.style.display = "block";
+        }
+        else
+        {
+            item.style.display = "none";
+        }
+        
+    })
+}
